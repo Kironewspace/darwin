@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agradecimiento</title>
+    <style>
+        body {
+            font-family: "Montserrat", sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .agradecimiento-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #28a745;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="agradecimiento-container">
+        <h1>Gracias por su compra</h1>
+        <p>Su código será: <strong>{{ codigo_pedido }}</strong></p>
+    </div>
+</body>
+</html>
