@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - {{ categoria|capitalize }}</title>
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #f0f0f0;
+            --text-color: #333;
+            --white: #fff;
+            --border-radius: 10px;
+            --transition-speed: 0.3s;
+            --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Montserrat", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: var(--text-color);
+        }
+
+        h2 {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .category-menu {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .category-menu a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin: 0 15px;
+            padding: 10px 15px;
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+
+        .category-menu a:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .cards {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .card {
+            position: relative;
+            width: 300px;
+            height: 320px;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            background-color: var(--white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .card img {
+            max-width: 183px;
+            max-height: 275px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: var(--border-radius);
+        }
+
+        .card .content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: var(--white);
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform var(--transition-speed);
+            text-align: center;
+        }
+
+        .card:hover .content {
+            transform: translateY(0);
+        }
+
+        .content h3 {
+            margin: 5px 0;
+            font-size: 1.2rem;
+        }
+
+        .content p {
+            margin: 5px 0;
+        }
+
+        .button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 15px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+
+        .button:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Menú de categorías -->
+    <h2>Productos de {{ categoria|capitalize }}</h2>
+
+<div class="cards">
+    {% for producto in productos %}
+    <div class="card">
+        <img src="data:image/jpeg;base64,{{ producto.imagen }}" alt="Imagen de {{ producto.nombre }}">
+        <div class="content">
+            <h3>{{ producto.nombre }}</h3>
+            <p>Modelo: {{ producto.modelo }}</p>
+            <p>Precio: ${{ producto.precio }}</p>
+            <a href="{{ url_for('producto_detalle', producto_id=producto.id) }}" class="button">Ver detalles</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>
