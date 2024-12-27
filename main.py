@@ -8,9 +8,9 @@ app = Flask(__name__)
 # Configuración de conexión a la base de datos
 sql_config = {
     'driver': 'ODBC Driver 18 for SQL Server',
-    'server': 'Miguel-PC',
-    'database': 'DarwinCell',
-    'user': 'SA',
+    'server': 'database-1.cdccgiuq0092.us-east-2.rds.amazonaws.com',
+    'database': 'shop',
+    'user': 'admin',
     'password': 'MTp070213.'
 }
 conn_str = (
